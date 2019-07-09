@@ -6,18 +6,26 @@ import Web3 from 'web3';
 const koa = new Koa();
 const app = new Router();
 require('dotenv').config();
-const provider = new HDWalletProvider(
-  process.env.MNEMONIC,
+const Tlalocan = new HDWalletProvider(
+  process.env.TL,
+  "https://ropsten.infura.io/v3/" + process.env.INFURA_APIKEY
+);
+const Tlaloc = new Web3(Tlalocan);
+const Anahuac = new HDWalletProvider(
+  process.env.AHC,
   "https://ropsten.infura.io/v3/" + process.env.INFURA_APIKEY,
   0,
   10,
-  process.env.DERIV_PATH
+  process.env.AHCPTH
 );
-const web3 = new Web3(provider);
+const Coatlicue = new Web3(Anahuac);
 
 app.get('/reward/u=:id', async (ctx) => {
   ctx.body = `Sending payment for user ${ctx.params.id}\n`;
-  console.log(web3.currentProvider)
+  let [Opochtli] = Tlaloc.currentProvider.connection.addresses
+  let CentzonMimixcoa = Coatlicue.currentProvider.connection.addresses
+  console.log(Opochtli)
+  console.log(CentzonMimixcoa)
 });
 
 koa.use(app.routes());
