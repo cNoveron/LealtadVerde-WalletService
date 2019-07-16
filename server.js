@@ -56,6 +56,7 @@ app.get('/r/:k::q::m', async (ctx) => {
     process.env.MACUILXOCHITL
   );
   let cuantas = await contract.methods.balanceOf(Opochtli).call()
+  console.log(cuantas)
   if (cuantas >= ctx.params.m) {
     let mimixcoatl = CentzonMimixcoa[ctx.params.q]
     contract.methods
