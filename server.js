@@ -57,7 +57,7 @@ app.get('/r/:k::q::m', async (ctx) => {
   );
   let cuantas = await contract.methods.balanceOf(Opochtli).call()
   console.log(cuantas)
-  if (cuantas >= ctx.params.m) {
+  if (cuantas.isGreaterThanOrEqualTo(ctx.params.m)) {
     let mimixcoatl = CentzonMimixcoa[ctx.params.q]
     contract.methods
       .transfer(mimixcoatl, ctx.params.m)
