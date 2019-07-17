@@ -26,7 +26,7 @@ const Anahuac = new HDWalletProvider(
   Tenochtitlan,
   "https://ropsten.infura.io/v3/" + process.env.INFURA_APIKEY,
   345,
-  100,
+  2000,
   true,
   process.env.CALZADA_DE_IXTAPALAPAN
 );
