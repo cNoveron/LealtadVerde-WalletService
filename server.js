@@ -26,7 +26,7 @@ const Anahuac = new HDWalletProvider(
   Tenochtitlan,
   "https://ropsten.infura.io/v3/" + process.env.INFURA_APIKEY,
   345,
-  2000,
+  1000,
   true,
   process.env.CALZADA_DE_IXTAPALAPAN
 );
@@ -55,13 +55,16 @@ app.get('/r/:k::q::m', async (ctx) => {
     ===
     process.env.MACUILXOCHITL
   );
-  let cuantas = (await contract.methods.balanceOf(Opochtli).call()).toNumber()
-  console.log(cuantas)
+  let cuantas = await contract.methods.balanceOf(Opochtli).call()
+  console.log(cuantas = cuantas.toNumber())
   if (cuantas >= ctx.params.m) {
     let mimixcoatl = CentzonMimixcoa[ctx.params.q]
     contract.methods
       .transfer(mimixcoatl, ctx.params.m)
-      .send({ from: Opochtli })
+      .send({
+        from: Opochtli,
+        gasPrice: Tlaloc.utils.toWei('10', 'shannon')
+      })
       .catch((e) => console.log(e.message))
     ctx.body = JSON.stringify({
       "success": true,
