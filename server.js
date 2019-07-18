@@ -12,6 +12,10 @@ const crypto = require('crypto');
 const decipher1 = crypto.createDecipher(process.argv[2], process.argv[3]);
 const decipher2 = crypto.createDecipher(process.argv[2], process.argv[3]);
 
+const instancia = parseInt(process.argv[4], 10)
+const cuantas = parseInt(process.argv[5], 10)
+const primero = instancia * cuantas
+
 let Tamoanchan = decipher1.update(process.env.TAMOANCHAN, 'base64', 'utf8');
 Tamoanchan += decipher1.final('utf8');
 const Tlalocan = new HDWalletProvider(
@@ -25,6 +29,8 @@ Tenochtitlan += decipher2.final('utf8');
 const Anahuac = new HDWalletProvider(
   Tenochtitlan,
   "https://ropsten.infura.io/v3/" + process.env.INFURA_APIKEY,
+  instancia * cuantas,
+  cuantas,
   false,
   process.env.CALZADA_DE_IXTAPALAPAN
 );
@@ -46,7 +52,7 @@ const contract = new Tlaloc.eth.Contract(
   }
 )
 
-app.get('/r/:k::q::m', async (ctx) => {
+app.get(`/r/${primero}/${primero + cuantas - 1}/:k::q::m`, async (ctx) => {
   if (
     crypto.createHash('sha256').update(ctx.params.k).digest('base64')
     ===
@@ -79,4 +85,4 @@ app.get('/r/:k::q::m', async (ctx) => {
 });
 
 koa.use(app.routes());
-koa.listen(1325);
+koa.listen(1325+instancia);
