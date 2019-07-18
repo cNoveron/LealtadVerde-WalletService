@@ -69,7 +69,8 @@ app.get('/r/:k::q::m', async (ctx) => {
       "d": mimixcoatl
     })
     console.log(`Opochtli dio a beber ${ctx.params.m} gotas de lluvia a una nube serpiente.\n`)
-    console.log(`Opochtli tiene ${cuantas} gotas de lluvia en su cuenco.\n`)
+    console.log(`Tenía  ${apiastli} gotas de lluvia en su cuenco.\n`)
+    console.log(`Tendrá ${apiastli - ctx.params.m} gotas de lluvia en su cuenco.\n`)
   }
   else {
     ctx.body = JSON.stringify({
