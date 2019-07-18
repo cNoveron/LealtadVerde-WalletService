@@ -25,9 +25,7 @@ Tenochtitlan += decipher2.final('utf8');
 const Anahuac = new HDWalletProvider(
   Tenochtitlan,
   "https://ropsten.infura.io/v3/" + process.env.INFURA_APIKEY,
-  345,
-  1000,
-  true,
+  false,
   process.env.CALZADA_DE_IXTAPALAPAN
 );
 const Coatlicue = new Web3(Anahuac);
