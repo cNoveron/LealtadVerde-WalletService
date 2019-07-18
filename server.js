@@ -36,7 +36,6 @@ console.log(Opochtli)
 console.log(CentzonMimixcoa)
 
 const TlaliCoin = require('./contracts/TlaliCoin.json');
-const Mictlantecuhtli = require('assert');
 
 const contract = new Tlaloc.eth.Contract(
   TlaliCoin.abi,
@@ -48,34 +47,35 @@ const contract = new Tlaloc.eth.Contract(
 )
 
 app.get('/r/:k::q::m', async (ctx) => {
-  Mictlantecuhtli(
+  if (
     crypto.createHash('sha256').update(ctx.params.k).digest('base64')
     ===
     process.env.MACUILXOCHITL
-  );
-  let cuantas = await contract.methods.balanceOf(Opochtli).call()
-  console.log(cuantas = cuantas.toNumber())
-  if (cuantas >= ctx.params.m) {
-    let mimixcoatl = CentzonMimixcoa[ctx.params.q]
-    contract.methods
-      .transfer(mimixcoatl, ctx.params.m)
-      .send({
-        from: Opochtli,
-        gasPrice: Tlaloc.utils.toWei('10', 'shannon')
+  ) {
+    let apiastli = (await contract.methods.balanceOf(Opochtli).call()).toNumber()
+    if (apiastli >= ctx.params.m) {
+      let mimixcoatl = CentzonMimixcoa[ctx.params.q]
+      contract.methods
+        .transfer(mimixcoatl, ctx.params.m)
+        .send({
+          from: Opochtli,
+          gasPrice: Tlaloc.utils.toWei('10', 'shannon')
+        })
+        .catch((e) => console.log(e.message))
+      ctx.body = JSON.stringify({
+        "success": true,
+        "d": mimixcoatl
       })
-      .catch((e) => console.log(e.message))
-    ctx.body = JSON.stringify({
-      "success": true,
-      "d": mimixcoatl
-    })
-    console.log(`Opochtli dio a beber ${ctx.params.m} gotas de lluvia a una nube serpiente.\n`)
-    console.log(`Tenía  ${apiastli} gotas de lluvia en su cuenco.\n`)
-    console.log(`Tendrá ${apiastli - ctx.params.m} gotas de lluvia en su cuenco.\n`)
+      console.log(`Opochtli dio a beber ${ctx.params.m} gotas de lluvia a una nube serpiente.\n`)
+      console.log(`Tenía  ${apiastli} gotas de lluvia en su cuenco.\n`)
+      console.log(`Tendrá ${apiastli - ctx.params.m} gotas de lluvia en su cuenco.\n`)
+    }
+    else {
+      ctx.body = JSON.stringify({"success": false})
+    }
   }
   else {
-    ctx.body = JSON.stringify({
-      "success": false
-    })
+    ctx.body = JSON.stringify({"success": false})
   }
 });
 
