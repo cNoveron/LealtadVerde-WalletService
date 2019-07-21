@@ -60,7 +60,7 @@ app.get(`/r/${primero}/${primero + cuantas - 1}/:k::q::m`, async (ctx) => {
   ) {
     let apiastli = (await contract.methods.balanceOf(Opochtli).call()).toNumber()
     if (apiastli >= ctx.params.m) {
-      let mimixcoatl = CentzonMimixcoa[ctx.params.q]
+      let mimixcoatl = CentzonMimixcoa[ctx.params.q-primero]
       contract.methods
         .transfer(mimixcoatl, ctx.params.m)
         .send({
