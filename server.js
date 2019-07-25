@@ -87,4 +87,4 @@ app.get(`/:k/r/:q/:m`, async (ctx) => {
 });
 
 koa.use(app.routes());
-koa.listen(1325+instancia);
+koa.listen(1325+instancia,'0.0.0.0');
