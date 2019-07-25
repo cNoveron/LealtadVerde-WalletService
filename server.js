@@ -52,7 +52,8 @@ const contract = new Tlaloc.eth.Contract(
   }
 )
 
-app.get(`/:k/r/${primero}/${primero + cuantas - 1}/:q/:m`, async (ctx) => {
+// app.get(`/:k/r/${primero}/${primero + cuantas - 1}/:q/:m`, async (ctx) => {
+app.get(`/:k/r/:q/:m`, async (ctx) => {
   if (
     crypto.createHash('sha256').update(ctx.params.k).digest('base64')
     ===
