@@ -52,12 +52,13 @@ const contract = new Tlaloc.eth.Contract(
   }
 )
 
-app.get(`/r/${primero}/${primero + cuantas - 1}/:k::q::m`, async (ctx) => {
+app.get(`/:k/r/${primero}/${primero + cuantas - 1}/:q/:m`, async (ctx) => {
   if (
     crypto.createHash('sha256').update(ctx.params.k).digest('base64')
     ===
     process.env.MACUILXOCHITL
-  ) {
+  )
+  try {
     let apiastli = (await contract.methods.balanceOf(Opochtli).call()).toNumber()
     if (apiastli >= ctx.params.m) {
       let mimixcoatl = CentzonMimixcoa[ctx.params.q-primero]
@@ -66,7 +67,7 @@ app.get(`/r/${primero}/${primero + cuantas - 1}/:k::q::m`, async (ctx) => {
         .send({
           from: Opochtli,
         })
-        .catch((e) => console.log(e.message))
+        // .catch((e) => console.log(e.message))
       ctx.body = JSON.stringify({
         "success": true,
         "d": mimixcoatl
@@ -79,8 +80,8 @@ app.get(`/r/${primero}/${primero + cuantas - 1}/:k::q::m`, async (ctx) => {
       ctx.body = JSON.stringify({"success": false})
     }
   }
-  else {
-    ctx.body = JSON.stringify({"success": false})
+  catch (error) {
+    ctx.body = JSON.stringify({ "success": false, "e": error.message})
   }
 });
 
