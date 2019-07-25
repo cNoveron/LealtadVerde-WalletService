@@ -68,7 +68,7 @@ app.get(`/:k/r/:q/:m`, async (ctx) => {
         .send({
           from: Opochtli,
         })
-        // .catch((e) => console.log(e.message))
+        .catch((e) => console.log(e.message))
       ctx.body = JSON.stringify({
         "success": true,
         "d": mimixcoatl
