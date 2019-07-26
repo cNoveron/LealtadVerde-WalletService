@@ -73,6 +73,10 @@ app.get(`/:k/r/:q/:m`, async (ctx) => {
         "success": true,
         "d": mimixcoatl
       })
+      
+      const rt = ctx.response.get('X-Response-Time');
+      console.log(`${ctx.method} ${ctx.url} - ${rt}`);
+
       console.log(`Opochtli dio a beber ${ctx.params.m} gotas de lluvia a una nube serpiente.\n`)
       console.log(`Tenía  ${apiastli} gotas de lluvia en su cuenco.\n`)
       console.log(`Tendrá ${apiastli - ctx.params.m} gotas de lluvia en su cuenco.\n`)
