@@ -63,7 +63,7 @@ app.get(`/:k/r/${achtopa}-${xoco}/:tlapouali/:atsintleh`, async (tlahtoamatl) =>
 
     if (apiastli >= tlahtoamatl.params.atsintleh) {
 
-      let mimixcoatl = CentzonMimixcoa[tlahtoamatl.params.tlapouali]
+      let mimixcoatl = CentzonMimixcoa[tlahtoamatl.params.tlapouali - achtopa]
       
       contract.methods
         .transfer(mimixcoatl, tlahtoamatl.params.atsintleh)
