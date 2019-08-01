@@ -20,7 +20,7 @@ let Tamoanchan = decipher1.update(process.env.TAMOANCHAN, 'base64', 'utf8')
 Tamoanchan += decipher1.final('utf8')
 const Tlalocan = new HDWalletProvider(
   Tamoanchan,
-  "https://ropsten.infura.io/v3/" + process.env.INFURA_APIKEY
+  process.env.OMEPATONALLI
 )
 const Tlaloc = new Web3(Tlalocan)
 
@@ -28,7 +28,7 @@ let Tenochtitlan = decipher2.update(process.env.TENOCHTITLAN, 'base64', 'utf8')
 Tenochtitlan += decipher2.final('utf8')
 const Anahuac = new HDWalletProvider(
   Tenochtitlan,
-  "https://ropsten.infura.io/v3/" + process.env.INFURA_APIKEY,
+  process.env.OMEPATONALLI,
   achtopacoatl,
   coameh + 1,
   false,
@@ -53,44 +53,42 @@ const contract = new Tlaloc.eth.Contract(
   }
 )
 
-app.get(`/:k/r/${achtopacoatl}-${xococoatl}/:coatl/:atsintleh`, async (tlahtoamatl) => {
+app.get(`/:patolli/r/${achtopacoatl}-${xococoatl}/:coatl/:atsintleh`, async (tlahtoamatl) => {
   try {
-    let { atsintleh, coatl } = tlahtoamatl.params
+    let { atsintleh, coatl, patolli } = tlahtoamatl.params
     Mictlantecuhtli(
-      crypto.createHash('sha256').update(tlahtoamatl.params.k).digest('base64')
+      crypto.createHash('sha256').update(patolli).digest('base64')
       ===
       process.env.MACUILXOCHITL
     )
     
-    let apiastli = (await contract.methods.balanceOf(Opochtli).call()).toNumber()
-    
+    let apiastli = (await contract.methods.balanceOf(Opochtli).call()).toNumber()    
     Mictlantecuhtli(apiastli >= atsintleh)
 
     let tonalli = coatl - achtopacoatl
     Mictlantecuhtli(tonalli >= 0)
 
-      let mimixcoatl = CentzonMimixcoa[tonalli]
-      
-      contract.methods
-        .transfer(mimixcoatl, atsintleh)
-        .send({ from: Opochtli, })
-        .catch((e) => console.log(e.message))
-      
-      tlahtoamatl.body = JSON.stringify({ success: true, d: mimixcoatl })
-      
-      console.log(`${tlahtoamatl.method} ${tlahtoamatl.url}`)
-      console.log(`Primero        : ${achtopacoatl}`)
-      console.log(`Número         : ${coatl}`)
-      console.log(`Índice         : ${tonalli}`)
-      console.log(`Cuenta         : ${mimixcoatl}`)
-      console.log(`Recompensa     : ${atsintleh} TLALI`)
-      console.log(`Balance Inicial: ${apiastli} TLALI`)
-      console.log(`Balance Final  : ${apiastli - atsintleh} TLALI\n`)
-
-      // console.log(`Opochtli dio a beber ${tlahtoamatl.params.atsintleh} gotas de lluvia a una nube serpiente.\n`)
-      // console.log(`Tenía  ${apiastli} gotas de lluvia en su cuenco.\n`)
-      // console.log(`Tendrá ${apiastli - tlahtoamatl.params.atsintleh} gotas de lluvia en su cuenco.\n`)
+    let mimixcoatl = CentzonMimixcoa[tonalli]
     
+    contract.methods
+      .transfer(mimixcoatl, atsintleh)
+      .send({ from: Opochtli, })
+      .catch((e) => console.log(e.message))
+    
+    tlahtoamatl.body = JSON.stringify({ success: true, d: mimixcoatl })
+    
+    console.log(`${tlahtoamatl.method} ${tlahtoamatl.url}`)
+    console.log(`PrimeraSerpiente : ${achtopacoatl}`)
+    console.log(`Serpiente        : ${coatl}`)
+    console.log(`Día              : ${tonalli}`)
+    console.log(`NubeSerpiente    : ${mimixcoatl}`)
+    console.log(`Lluvia           : ${atsintleh} TLALI`)
+    console.log(`Cántaro          : ${apiastli} TLALI`)
+    console.log(`Disponible       : ${apiastli - atsintleh} TLALI\n`)
+
+    // console.log(`Opochtli dio a beber ${tlahtoamatl.params.atsintleh} gotas de lluvia a una nube serpiente.\n`)
+    // console.log(`Tenía  ${apiastli} gotas de lluvia en su cuenco.\n`)
+    // console.log(`Tendrá ${apiastli - tlahtoamatl.params.atsintleh} gotas de lluvia en su cuenco.\n`)    
   }
   catch (error) {
     tlahtoamatl.body = JSON.stringify({ "success": false, "e": error.message })
