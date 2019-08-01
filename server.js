@@ -49,7 +49,7 @@ const contract = new Tlaloc.eth.Contract(
   '0x30F5b4aE853CCe930e33Aaae63433AcA639e631C',
   {
     defaultAccount: Opochtli,
-    defaultGasPrice: Tlaloc.utils.toWei('10', 'shannon')
+    defaultGasPrice: Tlaloc.utils.toWei('20', 'shannon')
   }
 )
 
